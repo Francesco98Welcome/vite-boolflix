@@ -39,9 +39,9 @@ export default {
 <style lang="scss">
 main {
     padding-top: 14px;
-    background-image: url('../assets/sfondoNetflix.jpeg');
+    /*background-image: url('../assets/sfondoNetflix.jpeg');
     background-size: contain;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat;*/
 }
 
 .filmAndSerie {
