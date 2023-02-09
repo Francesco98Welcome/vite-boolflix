@@ -34,10 +34,10 @@ export default {
         <div>
             <span class="icon-input">
                 <span class="icon-search"><i class="fa-solid fa-magnifying-glass"></i></span>
-                <input type="text" v-model="store.searchText" v-on:keyup.enter="$('search')"
+                <input type="text" v-model="store.searchText" v-on:keyup.enter="$emit('performSearch')"
                     placeholder="Cerca qualcosa..">
             </span>
-            <button type="submit" @click="$emit('search')">Search</button>
+            <button type="submit" @click="$emit('performSearch')">Search</button>
         </div>
     </header>
 </template>
@@ -78,7 +78,7 @@ header {
         padding: 6px;
         background-color: black;
         border-radius: 4px;
-        margin-right: 10px;
+        margin-right: 20px;
         border: 1px solid white;
         border-radius: 8px;
 
@@ -87,6 +87,7 @@ header {
             color: lightgray;
             border: none;
             margin-left: 4px;
+            padding: 6px;
         }
 
         >.icon-search {
@@ -99,10 +100,13 @@ header {
         padding: 6px;
         border-radius: 4px;
         border: none;
-        color: gray;
 
         &:hover {
             color: white;
+            background-color: black;
+            border: 1px solid white;
+            cursor: pointer;
+            transition: 2s;
         }
     }
 }

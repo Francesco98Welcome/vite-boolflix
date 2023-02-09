@@ -25,8 +25,9 @@ export default {
           }
         )
         .then((response) => {
-          store.films = response.data.results
+          this.store.films = response.data.results
         });
+      console.log('ciao');
     },
 
     searchSerie() {
@@ -38,7 +39,7 @@ export default {
           }
         )
         .then((response) => {
-          store.series = response.data.results
+          this.store.series = response.data.results
         });
     },
   }
@@ -46,7 +47,7 @@ export default {
 </script>
 
 <template>
-  <AppHeader @search="searchFilm(); searchSerie();" />
+  <AppHeader @performSearch="searchFilm(); searchSerie();" />
   <AppMain />
 
 </template>
