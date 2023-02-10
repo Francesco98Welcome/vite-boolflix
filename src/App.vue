@@ -21,13 +21,15 @@ export default {
         .get("https://api.themoviedb.org/3/search/movie?api_key=eb01afe2b45b7303c28f1174082827ed",
           {
             params:
-              { query: store.searchText }
+            {
+              query: this.store.searchText,
+              language: 'it-IT'
+            }
           }
         )
         .then((response) => {
           this.store.films = response.data.results
         });
-      console.log('ciao');
     },
 
     searchSerie() {
@@ -35,7 +37,10 @@ export default {
         .get("https://api.themoviedb.org/3/search/tv?api_key=eb01afe2b45b7303c28f1174082827ed",
           {
             params:
-              { query: store.searchText }
+            {
+              query: this.store.searchText,
+              language: 'it-IT'
+            }
           }
         )
         .then((response) => {
@@ -53,5 +58,5 @@ export default {
 </template>
 
 <style lang="scss">
-@use "./styles/main.scss"
+@use "./styles/main.scss";
 </style>

@@ -11,7 +11,7 @@ export default {
         }
     },
     emits: [
-        'search'
+        'performSearch',
     ]
 }
 </script>
@@ -45,7 +45,7 @@ export default {
 <style lang="scss">
 header {
     padding: 20px;
-    background-color: black;
+    background-color: rgb(0, 0, 0);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -71,6 +71,10 @@ header {
                 }
             }
         }
+    }
+
+    >div:last-child {
+        margin-right: 50px;
     }
 
     .icon-input {
