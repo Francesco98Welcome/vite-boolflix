@@ -16,19 +16,21 @@ export default {
     }
   },
   methods: {
+  
+    // Metodo per cercare un film
     searchFilm() {
       axios
         .get("https://api.themoviedb.org/3/search/movie?api_key=eb01afe2b45b7303c28f1174082827ed",
           {
             params:
             {
-              query: this.store.searchText,
-              language: 'it-IT'
+              query: this.store.searchText, // Parola chiave per la ricerca del film
+              language: 'it-IT'             // Lingua in cui restituire i risultati
             }
           }
         )
         .then((response) => {
-          this.store.films = response.data.results
+          this.store.films = response.data.results  // Aggiorna l'elenco dei film con i risultati della ricerca
         });
     },
 
@@ -39,12 +41,12 @@ export default {
             params:
             {
               query: this.store.searchText,
-              language: 'it-IT'
+              language: 'it-IT'                       // Lingua in cui restituire i risultati
             }
           }
         )
         .then((response) => {
-          this.store.series = response.data.results
+          this.store.series = response.data.results   // Aggiorna l'elenco delle serie TV con i risultati della ricerca
         });
     },
   }
