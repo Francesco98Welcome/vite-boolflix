@@ -8,6 +8,8 @@ export default {
         }
     },
     methods: {
+    
+        // Metodo che restituisce l'URL dell'immagine della bandiera corrispondente alla lingua
         getFlag(lang) {
             switch (lang) {
                 case 'en':
@@ -25,13 +27,17 @@ export default {
 
             return flag;
         },
+        
+        // Metodo che calcola e restituisce il voto di un film diviso per 2 e arrotondato per eccesso
         getVoteFilm(film) {
             let newVoteFilm = film.vote_average;
             newVoteFilm = newVoteFilm / 2;
             newVoteFilm = Math.ceil(newVoteFilm); //arrotondo per eccesso
-            console.log('FILM', film.title, ':', film.vote_average, '-', newVoteFilm);
+            console.log('FILM', film.title, ':', film.vote_average, '-', newVoteFilm); // Stampo il titolo del film, il voto originale e il voto arrotondato
             return newVoteFilm;
         },
+        
+        // Metodo che calcola e restituisce il voto di una serie tv diviso per 2 e arrotondato per eccesso
         getVoteSerie(serie) {
             let newVoteSerie = serie.vote_average;
             newVoteSerie = newVoteSerie / 2;
@@ -50,22 +56,36 @@ export default {
         <div class="title">
             Film e serie TV , solo su BoolFlix
         </div>
+        
+        <!--Contenitore di tutti i film e le serie TV-->
         <div class="filmAndSerie">
+        
+            <!--Iterazione tra tutti i film nel magazzino-->
             <div v-for="film in store.films" class="Movies">
                 <div>
+                
+                    <!--Immagine del film-->
                     <div class="image">
                         <img :src="'https://image.tmdb.org/t/p/w300' + film.poster_path" alt="">
                     </div>
+                    
+                    <!--Informazioni del film-->
                     <div class="info-film-serie">
+                    
+                        <!--Titolo, titolo originale, lingua originale e voto del film-->
                         <div class="title-lang-vote">
                             <div><span>Titolo:</span> {{ film.title }}</div>
                             <div><span>Titolo originale:</span> {{ film.original_title }}</div>
                             <div><span>Lang:</span>
                                 <!--{{ film.original_language }}-->
+                                
+                                <!--Bandiera della lingua originale del film-->
                                 <img :src="getFlag(film.original_language)" class="flag">
                             </div>
                             <div>
                                 <span>Voto:</span>
+                                
+                                <!--Visualizzazione del voto tramite stelle piene e vuote in base alla media del voto-->
                                 <span class="starOn" v-for="star in getVoteFilm(film)">★</span>
                                 <span class="starOff" v-for="stars in (5 - getVoteFilm(film))">☆</span>
                                 <!-- {{ film.vote_average }}-->
